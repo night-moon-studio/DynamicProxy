@@ -28,10 +28,11 @@ namespace BenchmarkProject
 
             //创建联合接口代理
             var proxier = new Proxier<TestInterface>();
+            
             proxier.UseSingleton();
             proxier["Get"] = "return value.Length;";
             //proxier["Get"] = action;
-            _func = proxier.GetInterfaceCreator<TestInterface>();
+            _func = proxier.GetCreator<TestInterface>();
             _instance = _func();
             for (int i = 0; i < 10000000; i++)
             {

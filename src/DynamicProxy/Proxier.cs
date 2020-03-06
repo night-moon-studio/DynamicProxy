@@ -56,6 +56,22 @@ namespace Natasha
 
 
         /// <summary>
+        /// 额外添加 Using 引用
+        /// </summary>
+        /// <param name="namespace"> 命名空间的来源 </param>
+        /// <returns></returns>
+        public Proxier Using(NamespaceConverter @namespace)
+        {
+
+            _builder.Using(@namespace);
+            return this;
+
+        }
+
+
+
+
+        /// <summary>
         /// 操作当前函数
         /// </summary>
         /// <param name="key"></param>
@@ -320,7 +336,7 @@ namespace Natasha
         }
 
 
-        public Func<TInterface> GetInterfaceCreator<TInterface>()
+        public Func<TInterface> GetCreator<TInterface>()
         {
 
             Complie();

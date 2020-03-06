@@ -2,6 +2,20 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;netcoreapp3.0;</TargetFrameworks>
+    <Product>DynamicProxy</Product>
+    <Description>基于 Natasha 动态编译库实现的动态接口代理。</Description>
+    <Copyright>.NET Core Community and Contributors</Copyright>
+    <PackageId>DotNetCore.Natasha.DynamicProxy</PackageId>
+    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+    <PackageReleaseNotes>首个版本</PackageReleaseNotes>
+    <Version>0.1.0</Version>
+    <PackageLicenseUrl>https://github.com/night-moon-studio/DynamicProxy/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/night-moon-studio/DynamicProxy</PackageProjectUrl>
+    <PackageTags>Roslyn ; IL ; Scripte ; Dynamic ; Proxy ; Interface ;</PackageTags>
+    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+    <Company>.NET Core Community</Company>
+    <PackageIconUrl>https://avatars2.githubusercontent.com/u/19404084</PackageIconUrl>
+    <Authors>NMSAzulX</Authors>
   </PropertyGroup>
 
   <ItemGroup>
