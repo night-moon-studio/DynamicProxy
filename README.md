@@ -1,5 +1,8 @@
 # DynamicProxy
-基于Natasha的动态代理
+基于Natasha的动态代理 
+
+<br/>
+<br/>  
 
 ## 准备工作
 
@@ -39,8 +42,8 @@
  // using Natahsa; 
 ```
 
-<br/>
-<br/>  
+<br/> 
+<br/> 
 
 ## 使用方法
 
@@ -69,8 +72,6 @@ var proxier = new Proxier<Abstract,Interface1,Interface2...>();
 
 ```
 <br/>
-<br/>  
-
 
 #### 重写函数
 
@@ -95,6 +96,7 @@ var instance = new Student();
 proxier["xxxMethod"] = (Func<School>)instance.GetSchool;  
 
 ```
+<br/> 
 
 #### 额外的引用
 
@@ -111,7 +113,30 @@ proxier.Using(typeof(School));
 > 原则上 Natasha 会构建所有的 using, 但如果您的类型是插件 DLL 加载进来的，或者动态生成，您需要使用 Using 方法添加命名空间。
 
 <br/>
-<br/>  
 
+#### 创建实例
+
+```C#
+
+//根据上面的构建，拿到实例创建的委托
+var interfaceCreator = proxier.GetCreator<Interface>();
+var abstractCreator = proxier.GetCreator<Abstract>();
+
+Interface iTemp = interfaceCreator();
+Abstract aTemp = abstractCreator();
+
+```
+
+<br/>  
+  
+  
+#### 执行方法
+
+```C#
+
+iTemp.XXX();
+aTemp.XXX();
+
+```
 
 
