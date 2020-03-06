@@ -9,12 +9,12 @@ namespace DynamicProxy
         public readonly Delegate DelegateParameter;
         public readonly string StringParameter;
 
-        public StringOrDelegate(string value = default, Delegate @delegate = default)
+        public StringOrDelegate(string value, Delegate @delegate = default)
         {
             DelegateParameter = @delegate;
             StringParameter = value;
         }
-        public StringOrDelegate(Delegate @delegate = default, string value = default)
+        public StringOrDelegate(Delegate @delegate, string value = default)
         {
             DelegateParameter = @delegate;
             StringParameter = value;
