@@ -1,5 +1,5 @@
 # DynamicProxy
-基于Natasha的动态代理 
+基于 Natasha 的动态函数代理。 
 
 <br/>
 <br/>  
@@ -139,4 +139,15 @@ aTemp.XXX();
 
 ```
 
+#### 单例实例
 
+```C#
+
+proxier.UseSingleton();
+
+//这样上面的代码:
+//  Interface iTemp = interfaceCreator();
+//  Abstract aTemp = abstractCreator();
+// iTemp == aTemp  两个委托返回的都是那个单例
+
+```
