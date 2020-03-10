@@ -8,7 +8,7 @@
     <PackageId>DotNetCore.Natasha.DynamicProxy</PackageId>
     <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
     <PackageReleaseNotes>首个版本</PackageReleaseNotes>
-    <Version>0.1.1</Version>
+    <Version>0.2.0</Version>
     <PackageLicenseUrl>https://github.com/night-moon-studio/DynamicProxy/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/night-moon-studio/DynamicProxy</PackageProjectUrl>
     <PackageTags>Roslyn ; IL ; Scripte ; Dynamic ; Proxy ; Interface ;</PackageTags>
