@@ -10,7 +10,7 @@ namespace UTProject
     [Trait("抽象类代理", "")]
     public class AbstractUT
     {
-        [Fact(DisplayName = "抽象方法")]
+        [Fact(DisplayName = "抽象方法实现")]
         public void Test()
         {
             var proxier = new Proxier<TestAbstact>();
@@ -19,7 +19,7 @@ namespace UTProject
             TestAbstact testAbstact = func();
             Assert.Equal(1, testAbstact.Get("1"));
         }
-        [Fact(DisplayName = "抽象方法2")]
+        [Fact(DisplayName = "抽象方法默认调用")]
         public void Test1()
         {
             var proxier = new Proxier<TestAbstact>();
@@ -27,7 +27,7 @@ namespace UTProject
             TestAbstact testAbstact = func();
             Assert.Equal(0, testAbstact.Get("0"));
         }
-        [Fact(DisplayName = "接口方法1")]
+        [Fact(DisplayName = "接口方法默认调用")]
         public void Test2()
         {
             var proxier = new Proxier<TestInterface1>();
@@ -35,7 +35,7 @@ namespace UTProject
             var testAbstact = func();
             Assert.Equal(0, testAbstact.GetInfo1("0"));
         }
-        [Fact(DisplayName = "接口方法2")]
+        [Fact(DisplayName = "接口方法实现")]
         public void Test3()
         {
             var proxier = new Proxier<TestInterface2>();
@@ -44,7 +44,7 @@ namespace UTProject
             var testAbstact = func();
             Assert.Equal(1, testAbstact.GetInfo2("0"));
         }
-        [Fact(DisplayName = "重载方法1")]
+        [Fact(DisplayName = "重载方法默认调用")]
         public void Test4()
         {
             var proxier = new Proxier<TestOverride>();
@@ -52,7 +52,7 @@ namespace UTProject
             var testAbstact = func();
             Assert.Equal(11, testAbstact.Get("0"));
         }
-        [Fact(DisplayName = "虚方法2")]
+        [Fact(DisplayName = "虚方法重写")]
         public void Test5()
         {
             var proxier = new Proxier<TestVirtual2>();
@@ -61,7 +61,7 @@ namespace UTProject
             var testAbstact = func();
             Assert.Equal(6, testAbstact.Get("0"));
         }
-        [Fact(DisplayName = "虚方法1")]
+        [Fact(DisplayName = "虚方法默认调用")]
         public void Test6()
         {
             var proxier = new Proxier<TestVirtual2>();
