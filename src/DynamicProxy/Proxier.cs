@@ -11,7 +11,7 @@ namespace Natasha
 {
     public class Proxier
     {
-
+        public const string NoNeedWriting = "NW1000-NoNeedToWrite";
         private readonly NClass _builder;
         private readonly ConcurrentDictionary<string, MethodInfo> _methodMapping;
         private readonly ConcurrentDictionary<Delegate, string> _staticDelegateOrderScriptMapping;
@@ -125,27 +125,33 @@ namespace Natasha
                 {
 
                     _methodMapping[item.Name] = item;
-                    if (item.IsAbstract)
+                    if (type.IsInterface)
                     {
 
-                        if (type.IsInterface)
+                        SetMethod(item.Name, item.ReturnType == typeof(void) ? default : "return default;");
+
+                    }
+                    else if (item.IsAbstract)
+                    {
+
+                        if (!item.Equals(item.GetBaseDefinition()))
+                        {
+
+                            SetMethod(item.Name, NoNeedWriting);
+
+                        }
+                        else
                         {
 
                             SetMethod(item.Name, item.ReturnType == typeof(void) ? default : "return default;");
 
                         }
-                        else if(item.Equals(item.GetBaseDefinition()))
-                        {
-
-                            SetMethod(item.Name, "1000-NoNeedToWrite");
-
-                        }
 
                     }
-                    else if (item.IsVirtual)
+                    else
                     {
 
-                        SetMethod(item.Name, "1000-NoNeedToWrite");
+                        SetMethod(item.Name, NoNeedWriting);
 
                     }
                     
@@ -316,7 +322,7 @@ namespace Natasha
                 foreach (var item in NeedReWriteMethods)
                 {
 
-                    if (!item.Value.Contains("1000-NoNeedToWrite"))
+                    if (!item.Value.Contains(NoNeedWriting))
                     {
                         _fieldBuilder.AppendLine(item.Value);
                     }
