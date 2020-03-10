@@ -67,6 +67,16 @@ namespace Natasha
             return this;
 
         }
+        /// <summary>
+        /// 额外添加 dll 引用
+        /// </summary>
+        /// <param name="path">dll文件路径</param>
+        /// <returns></returns>
+        public Proxier AddDll(string path)
+        {
+            _builder.Complier.Domain.LoadStream(path);
+            return this;
+        }
 
 
 
