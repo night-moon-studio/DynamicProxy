@@ -153,3 +153,13 @@ proxier.UseSingleton();
 // iTemp == aTemp  两个委托返回的都是那个单例
 
 ```
+
+<br/>  
+ 
+#### 加载额外引用
+
+```C#
+
+proxier.AddDll("xxx.dll");
+
+```
