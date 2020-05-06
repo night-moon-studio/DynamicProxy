@@ -4,22 +4,22 @@
     <TargetFrameworks>netstandard2.0;netcoreapp3.0;</TargetFrameworks>
     <Product>DynamicProxy</Product>
     <Description>基于 Natasha 动态编译库实现的动态接口代理。</Description>
-    <Copyright>.NET Core Community and Contributors</Copyright>
-    <PackageId>DotNetCore.Natasha.DynamicProxy</PackageId>
+    <Copyright>Night Moon Studio</Copyright>
+    <PackageId>NMS.DynamicProxy</PackageId>
     <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
-    <PackageReleaseNotes>首个版本</PackageReleaseNotes>
-    <Version>0.2.1</Version>
+    <PackageReleaseNotes>新版本</PackageReleaseNotes>
+    <Version>1.0.0</Version>
     <PackageLicenseUrl>https://github.com/night-moon-studio/DynamicProxy/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/night-moon-studio/DynamicProxy</PackageProjectUrl>
     <PackageTags>Roslyn ; IL ; Scripte ; Dynamic ; Proxy ; Interface ;</PackageTags>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
-    <Company>.NET Core Community</Company>
-    <PackageIconUrl>https://avatars2.githubusercontent.com/u/19404084</PackageIconUrl>
+    <Company>NMSAzulX</Company>
+    <PackageIconUrl>https://avatars2.githubusercontent.com/u/51699821</PackageIconUrl>
     <Authors>NMSAzulX</Authors>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="DotNetCore.Natasha" Version="2.12.0" />
+    <PackageReference Include="DotNetCore.Natasha" Version="3.0.0.1" />
   </ItemGroup>
 
 </Project>

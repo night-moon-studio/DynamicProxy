@@ -1,5 +1,7 @@
 ﻿using DynamicProxy;
-using Natasha.Operator;
+using Natasha.CSharp;
+using Natasha.CSharp.Operator;
+using Natasha.Reverser.Model;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -25,7 +27,7 @@ namespace Natasha
         public Proxier()
         {
 
-            _builder = NClass.Random().Public.Namespace("Natasha.Proxy");
+            _builder = NClass.RandomDomain().Public().Namespace("Natasha.Proxy");
             NeedReWriteMethods = new ConcurrentDictionary<string, string>();
             _methodMapping = new ConcurrentDictionary<string, MethodInfo>();
             _staticDelegateOrderScriptMapping = new ConcurrentDictionary<Delegate, string>();
@@ -40,7 +42,7 @@ namespace Natasha
 
         public string CurrentProxyName
         {
-            get { return _builder.OopNameScript; }
+            get { return _builder.NameScript; }
         }
 
 
@@ -74,7 +76,7 @@ namespace Natasha
         /// <returns></returns>
         public Proxier AddDll(string path)
         {
-            _builder.Complier.Domain.LoadStream(path);
+            _builder.AssemblyBuilder.Compiler.Domain.LoadPluginFromStream(path);
             return this;
         }
 
@@ -179,16 +181,18 @@ namespace Natasha
                 _needReComplie = true;
                 var method = _methodMapping[name];
                 var type = method.DeclaringType;
-                var template = FakeMethodOperator.Random();
+                var template = FakeMethodOperator.RandomDomain();
+
                 if (!type.IsInterface)
                 {
 
-                    _ = (method.IsAbstract || method.IsVirtual) ? template.OverrideMember : template.NewMember;
+                    template.Modifier((method.IsAbstract || method.IsVirtual) ? "override" : "new");
 
                 }
-                var result = template
+                var result =  template
                     .UseMethod(method)
-                    .MethodContent(script).Builder().MethodScript;
+                    .Methodbody(script)
+                    .Script;
 
 
                 NeedReWriteMethods[name] = result;
@@ -258,8 +262,8 @@ namespace Natasha
             if (_needReComplie)
             {
 
-                _builder.UseRandomOopName();
-                _builder.OopContentScript.Clear();
+                _builder.UseRandomName();
+                _builder.BodyScript.Clear();
                 StringBuilder _fieldBuilder = new StringBuilder();
                 StringBuilder _methodBuilder = new StringBuilder();
                 HashSet<string> _fieldCache = new HashSet<string>();
@@ -334,12 +338,12 @@ namespace Natasha
                     _fieldBuilder.Append($@"static {CurrentProxyName}(){{ Instance = new {CurrentProxyName}(); }}");
                 }
                 _fieldBuilder.Append(ProxyBody);
-                _builder.OopBody(_fieldBuilder);
+                _builder.Body(_fieldBuilder.ToString());
                 var type = _builder.GetType();
 
 
-                var action = NDomain.Create(_builder.Complier.Domain).Action<List<(string memberName, Delegate @delegate, string typeScript)>>($@"
-                    {_builder.OopNameScript}.SetDelegate(obj);
+                var action = NDelegate.UseCompiler(_builder.AssemblyBuilder).Action<List<(string memberName, Delegate @delegate, string typeScript)>>($@"
+                    {_builder.NameScript}.SetDelegate(obj);
                 ", "Natasha.Proxy");
                 action(_staticNameDelegateMapping);
 
@@ -359,9 +363,9 @@ namespace Natasha
             if (_useSingleton)
             {
 
-                return NDomain.Create(_builder.Complier.Domain).Func<TInterface>($@"
+                return NDelegate.UseCompiler(_builder.AssemblyBuilder).Func<TInterface>($@"
 
-                     return {_builder.OopNameScript}.Instance;
+                     return {_builder.NameScript}.Instance;
 
                 ", "Natasha.Proxy");
 
@@ -369,9 +373,9 @@ namespace Natasha
             else
             {
 
-                return NDomain.Create(_builder.Complier.Domain).Func<TInterface>($@"
+                return NDelegate.UseCompiler(_builder.AssemblyBuilder).Func<TInterface>($@"
 
-                     return new {_builder.OopNameScript}();
+                     return new {_builder.NameScript}();
 
                 ", "Natasha.Proxy");
 
