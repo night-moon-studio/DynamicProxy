@@ -6,39 +6,27 @@
 
 ## 准备工作
 
-#### 首先编辑您的工程文件：
 
-```C#
+#### 使用方法(User Api)：  
 
-  <PropertyGroup>
-  
-    <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
-    
-    //控制台/桌面如下
-    <PreserveCompilationContext>true</PreserveCompilationContext>
-    
-    //老版WEB需要
-    <MvcRazorExcludeRefAssembliesFromPublish>false</MvcRazorExcludeRefAssembliesFromPublish>
-    
-    //3.1 新版WEB要加
-    <PreserveCompilationReferences>true</PreserveCompilationReferences>
-    //3.1 如果不加上面节点也可以引用Razor的编译服务
-    Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation
-    
-    //如果你觉得发布文件夹下关于本地化的文件夹太多，您可以选择如下节点
-    //选项：cs / de / es / fr / it / ja / ko / pl / ru / tr / zh-Hans / zh-Hant
-    <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
-    
-  </PropertyGroup>
+ <br/>  
  
-```  
+ - 引入 动态构件库： NMS.DynamicProxy
+
+ - 引入 编译环境库： DotNetCore.Compile.Environment
+
+ - 向引擎中注入定制的域： DomainManagement.RegisterDefault< AssemblyDomain >()
+
+ - 敲代码  
+ 
+<br/>  
+
 
 #### 添加引用
 
 ```C#
 
- // Nuget DotNetCore.Natasha.DynamicProxy
+ // Nuget NMS.DynamicProxy
  // using Natahsa; 
 ```
 
