@@ -19,16 +19,6 @@
 
  - 敲代码  
  
-<br/>  
-
-
-#### 添加引用
-
-```C#
-
- // Nuget NMS.DynamicProxy
- // using Natahsa; 
-```
 
 <br/> 
 <br/> 
