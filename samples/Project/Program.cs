@@ -25,21 +25,21 @@ namespace Project
 
 
             //获取接口实例委托
-            var func = proxier.GetCreator<MyInterface1>();
+            var func = proxier.GetDefaultCreator<MyInterface1>();
             //创建接口实例
             MyInterface1 interface1 = func();
             Console.WriteLine(interface1.GetName(100));
 
 
             //获取接口实例委托
-            var func2 = proxier.GetCreator<MyInterface2>();
+            var func2 = proxier.GetDefaultCreator<MyInterface2>();
             //创建接口实例
             MyInterface2 interface2 = func2();
             Console.WriteLine(interface2.GetAge("abcdefg"));
 
 
             //获取接口实例委托
-            var func3 = proxier.GetCreator<MyAbstract>();
+            var func3 = proxier.GetDefaultCreator<MyAbstract>();
             //创建接口实例
             MyAbstract interface3 = func3();
             interface3.Show();

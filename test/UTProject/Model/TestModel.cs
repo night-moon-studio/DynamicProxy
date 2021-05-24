@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace UTProject.Model
 {
@@ -19,6 +20,21 @@ namespace UTProject.Model
         }
 
     }
+
+
+    public abstract class TestTaskAbstract 
+    {
+        public abstract ValueTask<int> Get(string value);
+    }
+    public interface TaskTestInterface1
+    {
+        public ValueTask<int> Get(string value);
+    }
+
+    
+
+
+
     public class TestVirtual2 : TestAbstact
     {
         public override int Get(string value)

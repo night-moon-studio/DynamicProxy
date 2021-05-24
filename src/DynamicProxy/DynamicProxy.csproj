@@ -7,8 +7,8 @@
     <Copyright>Night Moon Studio</Copyright>
     <PackageId>NMS.DynamicProxy</PackageId>
     <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
-    <PackageReleaseNotes>新版本</PackageReleaseNotes>
-    <Version>1.0.0</Version>
+    <PackageReleaseNotes>更新依赖,增加迭代器,增加异步构建,增加多参数初始化支持.</PackageReleaseNotes>
+    <Version>1.3.0</Version>
     <PackageLicenseUrl>https://github.com/night-moon-studio/DynamicProxy/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/night-moon-studio/DynamicProxy</PackageProjectUrl>
     <PackageTags>Roslyn ; IL ; Scripte ; Dynamic ; Proxy ; Interface ;</PackageTags>
@@ -19,7 +19,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="DotNetCore.Natasha" Version="3.0.0.1" />
+    <PackageReference Include="DotNetCore.Natasha.CSharp.All" Version="2.1.0" />
   </ItemGroup>
 
 </Project>

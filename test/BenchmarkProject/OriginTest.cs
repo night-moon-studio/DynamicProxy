@@ -32,7 +32,7 @@ namespace BenchmarkProject
             //proxier.UseSingleton();
             proxier["Get"] = "return value.Length;";
             //proxier["Get"] = action;
-            _func = proxier.GetCreator<TestInterface>();
+            _func = proxier.GetDefaultCreator<TestInterface>();
             _instance = _func();
             for (int i = 0; i < 10000000; i++)
             {
