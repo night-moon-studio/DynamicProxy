@@ -80,7 +80,7 @@ namespace Natasha
         /// <returns></returns>
         public Proxier AddDll(string path)
         {
-            ClassBuilder.AssemblyBuilder.Compiler.Domain.LoadPluginFromStream(path);
+            ClassBuilder.AssemblyBuilder.Compiler.Domain.LoadPlugin(path);
             return this;
         }
 
@@ -121,7 +121,7 @@ namespace Natasha
         public Proxier Implement(Type type)
         {
 
-            ClassBuilder.Inheritance(type);
+            ClassBuilder.InheritanceAppend(type);
             var methods = type.GetMethods();
             foreach (var item in methods)
             {

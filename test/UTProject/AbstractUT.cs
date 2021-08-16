@@ -34,7 +34,8 @@ namespace UTProject
         public void Test2()
         {
             NatashaInitializer.InitializeAndPreheating();
-            var proxier = new Proxier<TestInterface1>();
+            var proxier = new Proxier();
+            proxier.Implement(typeof(TestInterface1));
             var func = proxier.GetDefaultCreator<TestInterface1>();
             var testAbstact = func();
             Assert.Equal(0, testAbstact.GetInfo1("0"));
@@ -45,7 +46,7 @@ namespace UTProject
             NatashaInitializer.InitializeAndPreheating();
             var proxier = new Proxier<TestInterface2>();
             proxier["GetInfo2"] = "return value.Length;";
-            var func = proxier.GetDefaultCreator<TestInterface2>();
+            var func = proxier.GetCreator();
             var testAbstact = func();
             Assert.Equal(1, testAbstact.GetInfo2("0"));
         }
